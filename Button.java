@@ -6,16 +6,18 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class button extends Actor
+public class Button extends Actor
 {
     public int x1;
     public int y1;
     public int x2;
     public int y2;
     public boolean isHovered = false;
-    public boolean canClick = true;
+    public boolean isMouseDown = false;
+    public int lastMouseX;
+    public int lastMouseY;
     
-    public button(int x1, int y1, int x2, int y2) {
+    public Button(int x1, int y1, int x2, int y2) {
         this.x1 = x1;
         this.y1 = y1;
         this.x2 = x2;
@@ -28,11 +30,11 @@ public class button extends Actor
             if(!isHovered) {
                 beginHover();
             }
-            if (isClicked() && canClick) {
+            if (isClicked()) {
                 onClick();
             }
-            if (!isClicked()) {
-                canClick = true;
+            if (isMouseDown) {
+                whileClicked();
             }
             isHovered = true;
         }
@@ -61,29 +63,43 @@ public class button extends Actor
     
     public boolean isClicked() {
         MouseInfo cursor = Greenfoot.getMouseInfo();
+        boolean toReturn = false;
         try {
             if (cursor.getButton() == 1) {
-                return true;
+                if (!isMouseDown) {
+                    isMouseDown = true;
+                    toReturn = true;
+                }
+                else {
+                    toReturn = false;
+                    if (cursor.getX() == lastMouseX && cursor.getY() == lastMouseY) {
+                        isMouseDown = false;
+                    }
+                    else {
+                        isMouseDown = true;
+                    }
+                }
+            }
+            else {
+                toReturn = false;
             }
         }
         catch(Exception e) {
-            ;
+            toReturn = false;
         }
-        return false;
+        lastMouseX = cursor.getX();
+        lastMouseY = cursor.getY();
+        return toReturn;
     }
     
+    public void whileClicked() {
+        System.out.println("Holding down mouse!");
+    }
     public void onClick() {
-        System.out.println("Clicking");
+        System.out.println("Clicked!");
     }
     
     public void beginHover() {
-        MouseInfo cursor = Greenfoot.getMouseInfo();
-        if (cursor.getButton() == 1) {
-            canClick = false;
-        }
-        else {
-            canClick = true;
-        }
         System.out.println("Begin hover");
     }
     
