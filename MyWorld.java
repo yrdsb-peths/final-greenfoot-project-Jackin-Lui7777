@@ -16,6 +16,6 @@ public class MyWorld extends World
     public MyWorld()
     {    
         super(600, 400, 1);
-        addObject(new Button(0, 0, 100, 100), 50, 50);
+        addObject(new Button(50, 50),0 ,0);
     }
 }

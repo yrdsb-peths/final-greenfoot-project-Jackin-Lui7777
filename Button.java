@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class button here.
+ * Write Button description of class button here.
  * 
  * @author (your name) 
- * @version (a version number or a date)
+ * @version (Button version number or Button date)
  */
 public class Button extends Actor
 {
@@ -32,8 +32,28 @@ public class Button extends Actor
         setImage(image);
     }
     
+    public Button(int x1, int y1) {
+        this.x1 = x1;
+        this.y1 = y1;
+        this.x2 = x1 + getImage().getWidth();
+        this.y2 = x1 + getImage().getHeight();
+    } 
+    
+    public void fixLocation() {
+        setLocation(x1 + (x2 - x1)/2, y1 + (y2 - y1)/2);
+    }
+    
+    public void changeLocation(int newX, int newY) {
+        x2 = newX + (x2 - x1);
+        y2 = newY + (y2 - y1);
+        x1 = newX;
+        y1 = newY;
+        fixLocation();
+    }
+    
     public void act() 
     {
+        fixLocation();
         if (isHovering()) {
             if(!isHovered) {
                 beginHover();
@@ -105,6 +125,7 @@ public class Button extends Actor
     public void whileClicked() {
         System.out.println("Holding down mouse!");
     }
+    
     public void onClick() {
         System.out.println("Clicked!");
     }
