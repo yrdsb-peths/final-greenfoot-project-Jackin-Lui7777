@@ -24,11 +24,20 @@ public class Button extends Actor
         this.y2 = y2;
     }
     
+    public Button(GreenfootImage image, int x1, int y1) {
+        this.x1 = x1;
+        this.y1 = y1;
+        this.x2 = x1 + image.getWidth();
+        this.y2 = x1 + image.getHeight();
+        setImage(image);
+    }
+    
     public void act() 
     {
         if (isHovering()) {
             if(!isHovered) {
                 beginHover();
+                initialHoverCheck();
             }
             if (isClicked()) {
                 onClick();
@@ -42,6 +51,7 @@ public class Button extends Actor
             if(isHovered) {
                 endHover();
             }
+            isMouseDown = false;
             isHovered = false;
         }
     }
@@ -105,5 +115,12 @@ public class Button extends Actor
     
     public void endHover() {
         System.out.println("End hover");
+    }
+    
+    public void initialHoverCheck() {
+        MouseInfo cursor = Greenfoot.getMouseInfo();
+        if (cursor.getButton() == 1) {
+            isMouseDown = true;
+        }
     }
 }
