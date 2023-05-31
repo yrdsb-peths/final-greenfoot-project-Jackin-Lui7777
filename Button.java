@@ -123,19 +123,19 @@ public class Button extends Actor
     }
     
     public void whileClicked() {
-        System.out.println("Holding down mouse!");
+        ;
     }
     
     public void onClick() {
-        System.out.println("Clicked!");
+        ;
     }
     
     public void beginHover() {
-        System.out.println("Begin hover");
+        ;
     }
     
     public void endHover() {
-        System.out.println("End hover");
+        ;
     }
     
     public void initialHoverCheck() {
