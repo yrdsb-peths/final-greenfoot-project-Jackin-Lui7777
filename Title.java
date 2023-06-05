@@ -16,6 +16,7 @@ public class Title extends World
     public Title()
     {    
         super(600, 400, 1); 
-        addObject(new PlayButton(new GreenfootImage("Play", 30, Color.BLACK, Color.WHITE), 50, 50), 0, 0);
+        GreenfootImage playImage = new GreenfootImage("Play", 30, Color.BLACK, Color.WHITE);
+        addObject(new PlayButton(playImage, getWidth()/2 - playImage.getWidth()/2, getHeight()/2 - playImage.getHeight()/2), 0, 0);
     }
 }

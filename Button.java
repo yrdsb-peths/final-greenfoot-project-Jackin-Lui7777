@@ -28,7 +28,7 @@ public class Button extends Actor
         this.x1 = x1;
         this.y1 = y1;
         this.x2 = x1 + image.getWidth();
-        this.y2 = x1 + image.getHeight();
+        this.y2 = y1 + image.getHeight();
         setImage(image);
     }
     
