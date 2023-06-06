@@ -18,6 +18,6 @@ public class PlayButton extends Button
     }
     
     public void onClick() {
-        Greenfoot.setWorld(new MyWorld());
+        Greenfoot.setWorld(new GameWorld());
     }
 }
