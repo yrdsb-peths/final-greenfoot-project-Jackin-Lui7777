@@ -16,7 +16,8 @@ public class GameWorld extends World
     public GameWorld()
     {    
         super(600, 400, 1);
-        addObject(new Button(300, 300),0 ,0);
+        addObject(new Player(), 50, 200);
+        addObject(new Obstacle(), 500, 200);
     }
     
     public void endGame() {

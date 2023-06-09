@@ -8,10 +8,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Player extends Actor
 {
-    public int jumpSpeed;
+    public int jumpSpeed = 10;
     public int velocity;
-    public int ceilingHeight;
-    public int floorHeight;
+    public int ceilingHeight = 100;
+    public int floorHeight = 200;
     public boolean canJump = true;
     
     public void act() 
@@ -27,12 +27,12 @@ public class Player extends Actor
                 canJump = true;
             }
         }
-        setLocation(getX(), getY() + velocity);
+        setLocation(getX(), getY() - velocity);
         if(getY() <= ceilingHeight) {
             setLocation(getX(), ceilingHeight);
             velocity = -velocity;
         }
-        if(getY() >= floorHeight) {
+        if(getY() > floorHeight) {
             setLocation(getX(), floorHeight);
             velocity = 0;
         }
