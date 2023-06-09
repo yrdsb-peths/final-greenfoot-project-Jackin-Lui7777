@@ -21,6 +21,7 @@ public class Obstacle extends Actor
         }
         if (getX() <= 0) {
             world.removeObject(this);
+            world.spawnObstacle();
         }
     }    
 }

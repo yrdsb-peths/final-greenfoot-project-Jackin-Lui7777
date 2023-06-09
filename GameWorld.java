@@ -17,7 +17,7 @@ public class GameWorld extends World
     {    
         super(600, 400, 1);
         addObject(new Player(), 50, 200);
-        addObject(new Obstacle(), 500, 200);
+        spawnObstacle();
     }
     
     public void endGame() {
@@ -25,5 +25,6 @@ public class GameWorld extends World
     }
     
     public void spawnObstacle() {
+        addObject(new Obstacle(), 500, 200);
     }
 }
