@@ -10,12 +10,20 @@ public class Player extends Actor
 {
     public int jumpSpeed = 10;
     public int velocity;
-    public int ceilingHeight = 100;
-    public int floorHeight = 200;
+    public int ceilingHeight;
+    public int floorHeight;
     public boolean canJump = true;
+    
+    public Player() {
+        GameWorld world = (GameWorld) getWorld();
+    }
     
     public void act() 
     {
+        GameWorld world = (GameWorld) getWorld();
+        this.ceilingHeight = world.getCeiling();
+        this.floorHeight = world.getFloor();
+        
         if(Greenfoot.isKeyDown("space")) {
             if (canJump) {
                 velocity = jumpSpeed;

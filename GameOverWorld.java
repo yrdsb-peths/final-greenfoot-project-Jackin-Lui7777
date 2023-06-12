@@ -15,9 +15,11 @@ public class GameOverWorld extends World
      */
     public GameOverWorld()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1);
-        GreenfootImage playImage = new GreenfootImage("Game Over!", 30, Color.BLACK, Color.WHITE);
-        addObject(new PlayButton(playImage, getWidth()/2 - playImage.getWidth()/2, getHeight()/2 - playImage.getHeight()/2), 0, 0);
+        GreenfootImage gameOverImage = new GreenfootImage("Game Over!", 30, Color.BLACK, Color.WHITE);
+        addObject(new Button(gameOverImage, getWidth()/2 - gameOverImage.getWidth()/2, getHeight()/2 - gameOverImage.getHeight()/2), 0, 0);
+        
+        GreenfootImage playImage = new GreenfootImage("Play again!", 30, Color.BLACK, Color.WHITE);
+        addObject(new PlayButton(playImage, getWidth()/2 - playImage.getWidth()/2, getHeight()/2 - playImage.getHeight()/2 + 50), 0, 0);
     }
 }
