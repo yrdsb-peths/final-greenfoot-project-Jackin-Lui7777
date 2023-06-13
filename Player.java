@@ -24,7 +24,7 @@ public class Player extends Actor
         this.ceilingHeight = world.getCeiling();
         this.floorHeight = world.getFloor();
         
-        if(Greenfoot.isKeyDown("space")) {
+        if(Greenfoot.isKeyDown("space") || Greenfoot.isKeyDown("w") || Greenfoot.isKeyDown("up")) {
             if (canJump) {
                 velocity = jumpSpeed;
                 canJump = false;
@@ -40,9 +40,17 @@ public class Player extends Actor
             setLocation(getX(), ceilingHeight);
             velocity = -velocity;
         }
-        if(getY() > floorHeight) {
+        else if(getY() >= floorHeight) {
             setLocation(getX(), floorHeight);
             velocity = 0;
+        }
+        
+        else {
+            if(Greenfoot.isKeyDown("s") || Greenfoot.isKeyDown("down")) {
+                if (velocity > 0) {
+                    velocity = -velocity;
+                }
+            }
         }
         
     } 

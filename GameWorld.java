@@ -17,7 +17,7 @@ public class GameWorld extends World
     public int ceilingHeight = 100;
     public int floorHeight = 300;
     
-    int obstacleDelayMax = 100;
+    int obstacleDelayMax = 50;
     int obstacleDelay = 0;
     
     public GameWorld()
@@ -36,8 +36,10 @@ public class GameWorld extends World
         
         obstacleDelay += 1;
         if (obstacleDelay >= obstacleDelayMax) {
-            spawnObstacle();
-            obstacleDelay = 0;
+            if(Greenfoot.getRandomNumber(30) == 0) {
+                spawnObstacle();
+                obstacleDelay = 0;
+            }
         }
         
         
