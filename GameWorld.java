@@ -14,17 +14,17 @@ public class GameWorld extends World
     public int scoreDelay = 0;
     public int scoreDelayMax = 6;
     
-    public int ceilingHeight = 100;
+    public int ceilingHeight = 150;
     public int floorHeight = 300;
     
     int obstacleDelayMax = 50;
     int obstacleDelay = 0;
     
+    
     public GameWorld()
     {    
         super(600, 400, 1);
         addObject(new Player(), 50, floorHeight);
-        spawnObstacle();
     }
     // Fix this 
     public void act() {
@@ -32,6 +32,10 @@ public class GameWorld extends World
         if (scoreDelay >= scoreDelayMax) {
             score += addScore;
             scoreDelay = 0;
+        }
+        
+        if (score % 250 == 0 && score > 0) {
+            increaseDifficulty();
         }
         
         obstacleDelay += 1;
@@ -47,7 +51,10 @@ public class GameWorld extends World
     }
     
     public void endGame() {
-        ;
+        GameOverWorld gameOver = new GameOverWorld();
+        Greenfoot.setWorld(gameOver);
+        gameOver.showText("Score: " + score, (int) (getWidth() * 0.8), (int) (getHeight() * 0.125));
+        
     }
     
     public int getSpeed() {
@@ -56,7 +63,7 @@ public class GameWorld extends World
     
     public void spawnObstacle() {
         Obstacle obstacle = new Obstacle();
-        addObject(obstacle, getWidth(), floorHeight);
+        addObject(obstacle, getWidth(), floorHeight + 40);
     }
     
     public int getCeiling() {
@@ -65,5 +72,14 @@ public class GameWorld extends World
     
     public int getFloor() {
         return floorHeight;
+    }
+    
+    public int getScore() {
+        return score;
+    }
+    
+    public void increaseDifficulty() {
+        speed += 1;
+        obstacleDelayMax -= 2;
     }
 }
