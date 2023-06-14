@@ -24,6 +24,7 @@ public class GameWorld extends World
     public GameWorld()
     {    
         super(600, 400, 1);
+        setBackground("images/background1.jpg");
         addObject(new Player(), 50, floorHeight);
     }
     // Fix this 

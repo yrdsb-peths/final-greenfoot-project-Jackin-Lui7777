@@ -16,7 +16,7 @@ public class TitleWorld extends World
     public TitleWorld()
     {    
         super(600, 400, 1); 
-        GreenfootImage gameTitle = new GreenfootImage("Name of game!", 30, Color.BLACK, Color.WHITE);
+        GreenfootImage gameTitle = new GreenfootImage(" Zombie Runner ", 30, Color.BLACK, Color.WHITE);
         addObject(new Button(gameTitle, getWidth()/2 - gameTitle.getWidth()/2, getHeight()/2 - gameTitle.getHeight()/2), 0, 0);
         
         GreenfootImage playImage = new GreenfootImage(" Click to Play! ", 30, Color.BLACK, Color.WHITE);

@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Obstacle extends Actor
 {
     public int delay = 0;
-    public int maxDelay = 4;
+    public int maxDelay = 6;
     
     public Obstacle() {
         setImage(new GreenfootImage("images/spikes.png"));
